@@ -227,14 +227,14 @@ EOF
         # make and make install.
         if [ "`echo $v | awk -F . '{print $1}'`" -lt 9 ]; then
             # 8.x doesn't have `make world`.
-            make -j3
+            make -j$(nproc)
             make install
             cd contrib
-            make -j3
+            make -j$(nproc)
             make install
         else
             # Yay, make world!
-            make world -j3
+            make world -j$(nproc)
             make install-world
         fi
 
